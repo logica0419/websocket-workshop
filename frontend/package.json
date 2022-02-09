@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vue-tsc --noEmit; rm -rf ../public && vite build --outDir ../public",
     "preview": "vite preview",
     "lint": "eslint ./src --ext .ts,.tsx,.vue && stylelint **/*.vue",
     "format": "prettier --write ./src",
-    "type-check": "tsc --noEmit"
+    "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
     "vue": "^3.2.25"
