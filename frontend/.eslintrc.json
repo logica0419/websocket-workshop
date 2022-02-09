@@ -1,0 +1,31 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:vue/vue3-recommended",
+    "@vue/typescript",
+    "prettier"
+  ],
+  "rules": {
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"],
+    "no-console": "warn",
+    "vue/block-lang": [
+      "error",
+      {
+        "script": { "lang": "ts" },
+        "style": { "lang": "scss" }
+      }
+    ],
+    "vue/component-api-style": ["error", ["composition"]],
+    "vue/component-name-in-template-casing": ["error", "kebab-case"],
+    "vue/custom-event-name-casing": ["error", "camelCase"],
+    "vue/v-on-event-hyphenation": ["error", "always", { "autofix": true }],
+    "vue/match-component-file-name": ["error", { "extensions": ["vue"] }],
+    "vue/v-on-function-call": "error",
+    "vue/require-emit-validator": "error",
+    "vue/no-template-target-blank": "error"
+  }
+}
