@@ -6,9 +6,12 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
+	"github.com/logica0419/websocket_workshop/streamer"
 )
 
 func main() {
+	s := streamer.NewStreamer()
+
 	e := echo.New()
 
 	e.Logger.SetLevel(log.DEBUG)
@@ -22,7 +25,10 @@ func main() {
 		api.GET("/ping", func(c echo.Context) error {
 			return c.String(http.StatusOK, "pong")
 		})
+		api.GET("/ws/:roomID", s.ConnectWS)
 	}
+
+	go s.Listen()
 
 	e.Logger.Panic(e.Start(":8080"))
 }
