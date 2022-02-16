@@ -21,6 +21,7 @@ func newClient(roomID string, conn *websocket.Conn, listener *chan receiveData) 
 		conn:     conn,
 		listener: listener,
 		sender:   make(chan string),
+		closer:   make(chan bool),
 	}
 }
 

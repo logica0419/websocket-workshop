@@ -9,7 +9,7 @@ import (
 
 type body struct {
 	Method string                 `json:"method,omitempty"`
-	Args   map[string]interface{} `json:"data,omitempty"`
+	Args   map[string]interface{} `json:"args,omitempty"`
 }
 
 func (s *Streamer) handleWebSocket(data receiveData) error {
