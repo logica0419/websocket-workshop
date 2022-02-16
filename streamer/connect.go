@@ -11,7 +11,7 @@ import (
 var upgrader = websocket.Upgrader{}
 
 func (s *Streamer) ConnectWS(c echo.Context) error {
-	roomID := c.Param("roomID")
+	roomID := c.QueryParam("room")
 	if roomID == "" {
 		return c.String(http.StatusBadRequest, "roomID is required")
 	}

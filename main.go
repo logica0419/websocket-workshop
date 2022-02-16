@@ -25,7 +25,7 @@ func main() {
 		api.GET("/ping", func(c echo.Context) error {
 			return c.String(http.StatusOK, "pong")
 		})
-		api.GET("/ws/:roomID", s.ConnectWS)
+		api.GET("/ws", s.ConnectWS)
 	}
 
 	go s.Listen()
