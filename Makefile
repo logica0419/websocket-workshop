@@ -11,5 +11,5 @@ dev:
 	@cd frontend && npm run dev
 
 .PHONY: run
-run: build
+run:
 	@go run ./*.go
