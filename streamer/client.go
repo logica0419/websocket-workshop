@@ -9,12 +9,12 @@ type client struct {
 	id       uuid.UUID
 	roomID   string
 	conn     *websocket.Conn
-	listener *chan receiveData
+	listener chan receiveData
 	sender   chan string
 	closer   chan bool
 }
 
-func newClient(roomID string, conn *websocket.Conn, listener *chan receiveData) *client {
+func newClient(roomID string, conn *websocket.Conn, listener chan receiveData) *client {
 	return &client{
 		id:       uuid.Must(uuid.NewV4()),
 		roomID:   roomID,
@@ -42,7 +42,7 @@ func (c *client) listen() {
 			body:     msg,
 		}
 
-		*c.listener <- data
+		c.listener <- data
 	}
 }
 

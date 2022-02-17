@@ -21,7 +21,7 @@ func (s *Streamer) ConnectWS(c echo.Context) error {
 		return c.String(http.StatusInternalServerError, fmt.Sprintf("failed to upgrade connection: %v", err))
 	}
 
-	client := newClient(roomID, conn, &s.listener)
+	client := newClient(roomID, conn, s.listener)
 
 	s.clientsMap[client.id] = client
 	s.roomIDMap[roomID] = append(s.roomIDMap[roomID], client.id)
