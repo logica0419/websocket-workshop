@@ -1,4 +1,4 @@
-module github.com/logica0419/websocket_workshop
+module github.com/logica0419/websocket-workshop
 
 go 1.17
 
