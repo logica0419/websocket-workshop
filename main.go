@@ -6,7 +6,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
-	"github.com/logica0419/websocket_workshop/streamer"
+	"github.com/logica0419/websocket-workshop/streamer"
 )
 
 func main() {
