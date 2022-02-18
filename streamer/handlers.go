@@ -7,14 +7,14 @@ import (
 	"time"
 )
 
-type body struct {
+type payload struct {
 	Method string                 `json:"method,omitempty"`
 	Args   map[string]interface{} `json:"args,omitempty"`
 }
 
 func (s *Streamer) handleWebSocket(data receiveData) error {
-	var req body
-	err := json.Unmarshal(data.body, &req)
+	var req payload
+	err := json.Unmarshal(data.payload, &req)
 	if err != nil {
 		return err
 	}
