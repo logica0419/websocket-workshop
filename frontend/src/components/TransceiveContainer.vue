@@ -58,11 +58,13 @@ export default defineComponent({
     });
 
     const onMessage = (value: string) => {
-      const mes = JSON.stringify({
-        method: "message",
-        args: { message: value },
-      });
-      RWS.send(mes);
+      if (value) {
+        const mes = JSON.stringify({
+          method: "message",
+          args: { message: value },
+        });
+        RWS.send(mes);
+      }
     };
 
     const onTime = () => {
