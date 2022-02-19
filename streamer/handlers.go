@@ -8,8 +8,12 @@ import (
 )
 
 type payload struct {
-	Method string                 `json:"method,omitempty"`
-	Args   map[string]interface{} `json:"args,omitempty"`
+	Method string          `json:"method,omitempty"`
+	Args   json.RawMessage `json:"args,omitempty"`
+}
+
+type messageArgs struct {
+	Message string `json:"message"`
 }
 
 func (s *Streamer) handleWebSocket(data receiveData) error {
@@ -21,7 +25,12 @@ func (s *Streamer) handleWebSocket(data receiveData) error {
 
 	switch req.Method {
 	case "message":
-		s.sendToRoom(data.roomID, req.Args["message"].(string))
+		var args messageArgs
+		err = json.Unmarshal(req.Args, &args)
+		if err != nil {
+			return err
+		}
+		s.sendToRoom(data.roomID, args.Message)
 	case "time":
 		s.sendToRoom(data.roomID, time.Now().String())
 	default:
