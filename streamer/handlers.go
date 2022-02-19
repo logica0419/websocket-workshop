@@ -32,7 +32,7 @@ func (s *Streamer) handleWebSocket(data receiveData) error {
 		}
 		s.sendToRoom(data.roomID, args.Message)
 	case "time":
-		s.sendToRoom(data.roomID, time.Now().String())
+		s.sendToRoom(data.roomID, time.Now().Format("01/02 15:04:05"))
 	default:
 		log.Printf("unknown method: %s", req.Method)
 		return fmt.Errorf("unknown method: %s", req.Method)
